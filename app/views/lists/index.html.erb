@@ -4,22 +4,22 @@
   <div class="cards-grid">
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.movies.last.poster_url %>')">
-              <h2 id="card-title"><%=list.name%></h2>
-            </div>
-            <div class="flip-card-back">
-              <p>
-                <ul>
-                  <% list.movies.each do |movie|%>
-                    <li><%=movie.title%></li>
-                  <% end %>
-                </ul>
-              </p>
+        <% if list.movies.empty? %>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/tema-cinema.jpg')">
+                <h2 id="card-title"><%=list.name%></h2>
+              </div>
+              <div class="flip-card-back">
+                <p>
+                  Start to adding Movies
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        <% else %>
+          <%= render "listcard", list: list %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
