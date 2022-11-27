@@ -1,17 +1,20 @@
 class BookmarksController < ApplicationController
   before_action :set_list, only: %i[new create]
   def new
+    return unless @list.user == current_user
+
     @bookmark = Bookmark.new
+    authorize @bookmark
   end
 
   def create
+    return unless @list.user == current_user
+
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
+    authorize @bookmark
     if @bookmark.save
-      respond_to do |format|
-        format.html { redirect_to list_path(@list) }
-        format.turbo_stream
-      end
+      redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
     end

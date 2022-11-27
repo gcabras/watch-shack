@@ -15,6 +15,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user = current_user
     if @list.save
       redirect_to list_path(@list)
     else
@@ -24,9 +25,12 @@ class ListsController < ApplicationController
 
   def edit
     # set list
+    return unless @list.user == current_user
   end
 
   def update
+    return unless @list.user == current_user
+
     @list = List.update(list_params)
     if @list.save
       redirect_to list_path(@list)
