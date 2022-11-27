@@ -8,9 +8,16 @@
           <h1 id="big-title"><span class="red-char">W</span>atch<span class="red-char">S</span>hack<span class="red-char">.</span></h1>
         </div>
         <div class="user-actions">
+        <% if current_user.nil? %>
+          <%= render template: "devise/sessions/new" %>
+          <%= link_to "New here? Sign up!", new_user_registration_path, class: "messages-homepage" %>
+          <p class="m-3">Or</p>
+          <%= link_to "Forgot your password?", new_user_password_path, class: "messages-homepage" %>
+        <% else %>
           <%= link_to raw('Find Inspiration  <i class="fas fa-lightbulb"></i>'), lists_path, class: "main-button", id:"home-button"%>
           <p class="m-3">Or</p>
           <%= link_to raw('Create a list  <i class="fas fa-clipboard-list"></i>'), new_list_path, class: "main-button", id:"home-button"%>
+        <% end %>
         </div>
       </div>
     </div>
