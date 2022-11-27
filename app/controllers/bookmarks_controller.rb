@@ -4,7 +4,6 @@ class BookmarksController < ApplicationController
     return unless @list.user == current_user
 
     @bookmark = Bookmark.new
-    authorize @bookmark
   end
 
   def create
@@ -12,7 +11,6 @@ class BookmarksController < ApplicationController
 
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
-    authorize @bookmark
     if @bookmark.save
       redirect_to list_path(@list)
     else
