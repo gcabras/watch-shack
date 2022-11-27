@@ -1,0 +1,15 @@
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= movie.poster_url %>')">
+      <h4 id="title-film-card"><%=movie.title%></h4>
+    </div>
+    <div class="flip-card-back">
+      <p>
+        <button type="button" class="main-button"> Details <i class="fas fa-magnifying-glass"></i></button>
+        <%= link_to moviebookmark_path(moviebookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want remove #{movie.title}?"} do %>
+          <button type="button" class="main-button"> Remove <i class="fa-regular fa-trash-can"></i></button>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
