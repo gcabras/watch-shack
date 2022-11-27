@@ -13,3 +13,19 @@
   color: $font-color-main;
   background-color: rgb(192, 11, 11);
 }
+
+.addlist-button {
+  text-decoration: none;
+  padding: 5px;
+  color: $font-color-main;
+  background-color: $font-red;
+  border-radius: 5px;
+  font-size: 25px;
+  border: 1px solid $font-color-main;
+}
+
+.addlist-button:hover {
+  text-decoration: none;
+  color: $font-color-main;
+  background-color: rgb(192, 11, 11);
+}

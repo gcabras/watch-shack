@@ -15,9 +15,7 @@
           <p class="m-3">Or</p>
           <%= link_to "Forgot your password?", new_user_password_path, class: "messages-homepage" %>
         <% else %>
-          <%= link_to raw('Find Inspiration  <i class="fas fa-lightbulb"></i>'), lists_path, class: "main-button", id:"home-button"%>
-          <p class="m-3">Or</p>
-          <%= link_to raw('Create a list  <i class="fas fa-clipboard-list"></i>'), new_list_path, class: "main-button", id:"home-button"%>
+          <%= link_to raw('Explore  <i class="fa-solid fa-film"></i>'), lists_path, class: "main-button", id:"home-button"%>
         <% end %>
         </div>
       </div>
