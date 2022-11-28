@@ -13,5 +13,6 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= yield %>
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>
