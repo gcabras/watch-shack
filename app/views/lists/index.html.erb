@@ -1,7 +1,7 @@
 <div class="container justify-content-center mt-3">
 <h1 id="big-title" class="text-center"><span class="font-color-secondary">WS</span> Lists<span class="red-char">.</span></h1>
   <div class="add-list">
-    <%= link_to new_list_path, class: "addlist-button" do %>
+    <%= link_to new_list_path, class: "addlist-button", data: { "turbo-frame": "modal" } do %>
       Create a List
     <% end %>
   </div>
