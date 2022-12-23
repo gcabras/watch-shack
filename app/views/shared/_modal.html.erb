@@ -1,14 +1,10 @@
 <%= turbo_frame_tag "modal" do %>
-  <div class="modal-container" data-controller="modal" data-action="keyup@document->modal#handleKeyup"> <!-- Clicking outside the modal will close will cause it to close -->
+  <div data-controller="modal" data-action="keyup@document->modal#handleKeyup"> <!-- Clicking outside the modal will close will cause it to close -->
     <div data-action="click->modal#close"></div>
-
     <div>
-      <button data-action="modal#close">X</button>
-
-      <%= turbo_frame_tag "modal-body" do %>
-        <%= yield %>
-      <% end %>
-    </div>
+        <%= turbo_frame_tag "modal-body" do %>
+          <%= yield %>
+        <% end %>
     </div>
   </div>
 <% end %>

@@ -1,32 +1,25 @@
-<div class="container justify-content-center mt-3">
-<h1 id="big-title" class="text-center"><span class="font-color-secondary">WS</span> Lists<span class="red-char">.</span></h1>
-  <div class="add-list">
-    <%= link_to new_list_path, class: "addlist-button", data: { "turbo-frame": "modal" } do %>
-      Create a List
-    <% end %>
-  </div>
-  <div class="cards-container">
-  <div class="cards-grid">
-    <% @lists.each do |list| %>
-      <%= link_to list_path(list) do %>
-        <% if list.movies.empty? %>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/tema-cinema.jpg')">
-                <h2 id="card-title"><%=list.name%></h2>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Add Movies
-                </p>
-              </div>
-            </div>
-          </div>
-        <% else %>
-          <%= render "listcard", list: list %>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="title-div">
+        <h1 id="big-title" class="text-center"><span class="font-color-secondary">WS</span> Lists<span class="red-char">.</span></h1>
+        <%= link_to new_list_path, class: 'big-heart-button', data: { "turbo-frame": "modal" } do %>
+          <i class="fa-solid fa-heart-circle-plus"
+          data-controller="tooltip"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Add your WS list"></i>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+      <div class="cards-container">
+        <div class="cards-grid">
+          <% @lists.each do |list| %>
+            <%= link_to list_path(list) do %>
+              <%= render 'listcard', list: list %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>

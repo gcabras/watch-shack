@@ -2,13 +2,15 @@
     <div class="row justify-content-center">
       <div class="col-sm-12 col-md-12 col-lg-6">
         <div class="container-list">
-          <h1 class="big-title">Create a New List</h1>
           <div class="form-modal">
             <%= render "shared/modal" do %>
-              <%= simple_form_for @list do |f| %>
-                <%= f.input :name %>
-                <%= f.submit class: "main-button" %>
-              <% end %>
+              <div class="modal-container">
+                <h1 class="big-title">Create a New List</h1>
+                  <%= simple_form_for @list do |f| %>
+                    <%= f.input :name %>
+                    <%= f.submit class: "main-button" %>
+                  <% end %>
+              </div>
             <% end %>
           </div>
         </div>

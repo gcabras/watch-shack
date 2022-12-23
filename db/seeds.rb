@@ -24,6 +24,7 @@ movies['items'].each do |movie|
   movie_id = movie['id']
   plot_url = URI.open("https://imdb-api.com/en/API/Title/#{api_key}/#{movie_id}").read
   movie_overview = JSON.parse(plot_url)['plot']
+  movie_genres = JSON.parse(plot_url)['genres']
   poster_url = URI.open("https://imdb-api.com/en/API/Posters/#{api_key}/#{movie_id}").read
   movie_poster = ''
   if JSON.parse(poster_url)['posters'].empty?
@@ -32,12 +33,16 @@ movies['items'].each do |movie|
     movie_poster = JSON.parse(poster_url)['posters'].sample['link']
   end
   puts "Adding #{movie_title}"
-  Movie.create!(
+  movie = Movie.new(
     title: movie_title,
     overview: movie_overview,
     poster_url: movie_poster,
     rating: movie_rating
   )
+  movie_genres.split(',').each do |genre|
+    movie.genres << genre
+  end
+  movie.save!
 end
 
-puts "Finished"
+puts 'Finished'

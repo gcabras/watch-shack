@@ -13,5 +13,8 @@ application.register("modal", ModalController)
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
 
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)
+
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
