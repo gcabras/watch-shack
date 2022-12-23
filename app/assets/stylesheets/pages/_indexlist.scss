@@ -1,3 +1,17 @@
 .add-list {
   text-align: center;
 }
+
+.title-div {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.big-heart-button {
+  font-size: 40px;
+  margin-bottom: 100px;
+  color: $font-color-main;
+}
