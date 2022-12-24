@@ -7,6 +7,16 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'json'
 require 'open-uri'
+#require 'resolv-replace'
+
+names = %w[Sam Dean John Marie Ruby Meg Castiel]
+names.each do |name|
+  User.create!(
+    username: name.downcase.to_s,
+    email: "#{name.downcase}@ws.com",
+    password: 'carryon'
+  )
+end
 
 api_key = 'k_71bzmhl3'
 
@@ -25,6 +35,8 @@ movies['items'].each do |movie|
   plot_url = URI.open("https://imdb-api.com/en/API/Title/#{api_key}/#{movie_id}").read
   movie_overview = JSON.parse(plot_url)['plot']
   movie_genres = JSON.parse(plot_url)['genres']
+  directors_list = JSON.parse(plot_url)['directorList']
+  actors_list = JSON.parse(plot_url)['actorList']
   poster_url = URI.open("https://imdb-api.com/en/API/Posters/#{api_key}/#{movie_id}").read
   movie_poster = ''
   if JSON.parse(poster_url)['posters'].empty?
@@ -42,7 +54,13 @@ movies['items'].each do |movie|
   movie_genres.split(',').each do |genre|
     movie.genres << genre
   end
+  directors_list.each do |director|
+    movie.directors << director['name']
+  end
+  actors_list.each do |actor|
+    movie.actors << actor['name']
+  end
   movie.save!
 end
 
-puts 'Finished'
+puts 'Finished seeding Movies'

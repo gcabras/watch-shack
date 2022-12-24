@@ -1,14 +1,19 @@
 <div class="movie_card" id="bright">
   <div class="info_section">
     <div class="movie_header">
-      <img class="locandina" src=<%= movie.poster_url %>/>
+      <!---<img class="locandina" src=<%= movie.poster_url %>/>--->
       <h1><%=movie.title%></h1>
+      <% movie.directors.each do |director| %>
+        <p><%= director %></p>
+      <% end %>
       <span class="rating"><%=movie.rating%><i class="fa-solid fa-star"></i><span id="logo"><i class="fa-brands fa-imdb"></i></span></span>
     </div>
     <div class="movie_desc">
       <div class="text">
        <p><%=movie.overview%></p>
       </div>
+    </div>
+    <div class="director">
     </div>
   </div>
   <div class="blur_back bright_back" style="background-image: url('<%= movie.poster_url%>');"></div>
