@@ -3,9 +3,20 @@
     <div class="movie_header">
       <!---<img class="locandina" src=<%= movie.poster_url %>/>--->
       <h1><%=movie.title%></h1>
-      <% movie.directors.each do |director| %>
-        <p><%= director %></p>
-      <% end %>
+      <p>by
+        <% if movie.directors.size == 1 %>
+          <%= movie.directors.first %>
+        <% else %>
+          <%= movie.directors.join(", ") %>
+        <% end %>
+      </p>
+      <p>with
+       <% if movie.actors.size == 1 %>
+          <%= movie.actors.first %>
+        <% else %>
+          <%= movie.actors.first(5).join(", ") %>
+        <% end %>
+      </p>
       <span class="rating"><%=movie.rating%><i class="fa-solid fa-star"></i><span id="logo"><i class="fa-brands fa-imdb"></i></span></span>
     </div>
     <div class="movie_desc">
